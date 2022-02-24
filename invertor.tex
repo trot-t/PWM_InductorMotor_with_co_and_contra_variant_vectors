@@ -1,0 +1,53 @@
+\begin{figure}[ht!]
+\begin{circuitikz}[scale=1]
+\ctikzset{bipoles/length=1.0cm}
+
+\draw(1.25,2.65)node[nigbt,bodydiode](npn1){};% 1 row 
+\draw (1.25,.55) node[nigbt,bodydiode](npn4){};%1row
+\draw (npn1.S) -- (npn4.D);
+
+% to get position of +-bus
+\path let \p1 = (npn1.D) in node(plus)  at (0,\y1) {};
+\draw (0,0) to[C] (plus);
+
+\draw(2.75,2.65)node[nigbt,bodydiode](npn3){};% 2 row
+\draw (2.75,.55) node[nigbt,bodydiode](npn6){};% 2 row
+\draw (npn3.S) -- (npn6.D);
+
+\draw (4.25,2.65)node[nigbt,bodydiode](npn5){};;% the last row 
+\draw (4.25,.55) node[nigbt,bodydiode](npn2){};% the last row
+\draw (npn5.S) -- (npn2.D);
+
+\draw (plus.center) --(npn1.D) node[above]{1} -- 
+	(npn3.D) node[above]{3} -- (npn5.D) node[above]{5}; % plus-bus
+\draw (0,0) -- (npn4.S) node[below]{4} -- 
+	(npn6.S) node[below]{6} -- (npn2.S) node[below]{2}; % minus-bus
+
+\draw ($(npn5.S)!0.75!(npn2.D)$) node[left]{\scriptsize$C$} to[short,*-] 
+++ (0.25,0) to[L,american inductor] ++ (1,0) node(C) {};    %coil C 
+\draw ($(npn3.S)!0.5!(npn6.D)$) node[left]{\scriptsize$B$} to[short,*-] 
+($(npn5.S)!0.5!(npn2.D)$) -- ++ (0.25,0) to[L,american inductor] ++ (1,0);  %coil B 
+\draw ($(npn1.S)!0.25!(npn4.D)$) node[left]{\scriptsize$A$} to[short,*-] 
+($(npn5.S)!0.25!(npn2.D)$) -- ++ (0.25,0) to[L,american inductor] ++ (1,0) node(A) {}; 
+
+\draw (A.center)--(C.center);
+\end{circuitikz}
+
+\begin{circuitikz}[scale=1]
+\newcommand{\D}{2.4}
+\newcommand{\I}{1.85}
+\draw[thin] (0,0) --({\D*cos(0)},{\D*sin(0)})   node(A) {} node[right] {\tiny(100)}; 
+\draw[thin] (0,0) --({\D*cos(60)},{\D*sin(60)}) node(W) {} node[above right] {\tiny(110)}; 
+\draw[thin] (0,0) --({\D*cos(120)},{\D*sin(120)}) node(B) {} node[above left] {\tiny(010)}; 
+\draw[thin] (0,0) --({\D*cos(180)},{\D*sin(180)}) node(U) {} node[left] {\tiny(011)};
+\draw[thin] (0,0) --({\D*cos(240)},{\D*sin(240)}) node(C) {} node[below left] {\tiny(001)};
+\draw[thin] (0,0) --({\D*cos(300)},{\D*sin(300)}) node(V) {} node[below right] {\tiny(101)}; 
+\draw[thin] (A.center) -- (W.center) -- (B.center) -- (U.center) -- (C.center) -- 
+	(V.center) -- (A.center);
+\draw[very thin,red,dashed] (0,0) circle ({\I});
+\draw[fill, white] ({\I*cos(25)},{\I*sin(25)})  rectangle  ({\I*cos(25)+0.5},{\I*sin(25)+0.5});
+\draw[->,>=latex,thick,red] (0,0) -- ({\I*cos(25)},{\I*sin(25)}) node[above right] {$\vec{U}$}; 
+\end{circuitikz}
+\caption{autonomous voltage inverter and space vector}
+\label{ain}
+\end{figure}

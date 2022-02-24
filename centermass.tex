@@ -1,0 +1,55 @@
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=0.8]
+\newcommand{\D}{8} % length of edge of triangle
+\newcommand{\vx}{5}
+\newcommand{\vy}{2}
+\draw[thick] (0,0) node[below left] {(000) {\large${\bf m_1}$}} node[left] {\text{(111)~~~~~~}}
+-- ({\D},0) node[below right] {{\large${\bf m_2} (100)$}} -- 
+	({\D/2},{\D*sqrt(3)/2}) node[above=8] {{\large${\bf m_3} (110)$}} -- (0,0); 
+   % ivector
+\draw[red,very thick,->,>=latex] (0,0) -- ({\vx}, {\vy}) node(v) {};
+\draw[thin] ({\vx + \vy/tan(60)},0) node[above right] {$K^\prime$} -- (\vx,\vy) -- 
+	({(\vx + \vy/tan(60))/2}, {(\vx + \vy/tan(60))*sqrt(3)/2} ) 
+node[right=.15cm] {K}; % countervariant at axes C and axes A
+ % subscription below
+\draw[very thin] (0,-0.1) -- (0,-1.5);
+\draw ({\vx + \vy/tan(60)},-0.1) -- ({\vx + \vy/tan(60)},-0.8); \draw (\D,-0.1) -- (\D,-1.5);
+\draw[very thin,<->,>=latex] (0,-0.4) --  ({\vx + \vy/tan(60)}, -0.4) 
+	node[midway, below] {$m_2+m_3$};
+\draw[very thin,<->,>=latex]  ({\vx + \vy/tan(60)}, -0.4) -- (\D, -0.4) 
+	node[midway, below] {$m_1$}; 
+        % the end of vector 
+\draw ({\vx}, {\vy})  node[above=0.25cm] {$\vec{U}$};
+\draw[thin] ({\vy/tan(60)} ,{\vy}) --  ({\vx}, {\vy}) -- ({\D - \vy/tan(60)},{\vy});
+\draw[thin] ({\vx-\vy/tan(60)},0 ) -- (\vx,\vy);
+\draw[thin] ({\D/2 + (\vx-\vy/tan(60))/2}, {\D*sqrt(3)/2 - (\vx-\vy/tan(60))*sqrt(3)/2}) 
+	-- (\vx,\vy);
+
+\draw[very thin]  ({\vx - \vy/tan(60)}, -1.0) -- ({\vx - \vy/tan(60)}, -1.5);
+\draw[very thin,<->,>=latex]  (0,-1.2) --  ({\vx - \vy/tan(60)}, -1.2) 
+	node[midway, below] {$m_2$};
+\draw[very thin,<->,>=latex] ({\vx - \vy/tan(60)}, -1.3) -- (\D, -1.3) 
+	node[midway, below] {$m_1+m_3$};
+
+        %subscription at the left
+\draw[very thin] ({0 - 0.1*sqrt(3)/2}, {0 + 0.1/2}) -- ({0 - 0.8*sqrt(3)/2}, {0 + 0.8/2});
+\draw[very thin] ({\vy/tan(60) - 0.1*sqrt(3)/2} ,{\vy + 0.1/2}) -- 
+	({\vy/tan(60) - 0.8*sqrt(3)/2} ,{\vy + 0.8/2});
+\draw[very thin,<->,>=latex] ({0 - 0.75*sqrt(3)/2}, {0 + 0.75/2}) -- 
+	({\vy/tan(60) - 0.75*sqrt(3)/2} ,{\vy + 0.75/2}) node[midway, above left] {$m_3$};
+\draw[very thin] ({(\vx + \vy/tan(60))/2 - 0.1*sqrt(3)/2}, {(\vx + \vy/tan(60))*sqrt(3)/2 + 0.1/2})
+	-- ({(\vx + \vy/tan(60))/2 - 0.8*sqrt(3)/2}, {(\vx + \vy/tan(60))*sqrt(3)/2 + 0.8/2});
+\draw[very thin,<->,>=latex] ({\vy/tan(60) - 0.7*sqrt(3)/2} ,{\vy + 0.7/2}) --
+         ({(\vx + \vy/tan(60))/2 - 0.7*sqrt(3)/2}, {(\vx + \vy/tan(60))*sqrt(3)/2 + 0.7/2}) 
+		 node[midway, above left] {$m_2$};
+\draw[very thin] ({\D/2 - 0.1*sqrt(3)/2},{\D*sqrt(3)/2 + 0.1/2}) -- 
+	({\D/2 - 0.8*sqrt(3)/2},{\D*sqrt(3)/2 + 0.8/2});
+\draw[very thin,<->,>=latex]  
+	({(\vx + \vy/tan(60))/2 - 0.5*sqrt(3)/2}, {(\vx + \vy/tan(60))*sqrt(3)/2 + 0.5/2}) --
+        ({\D/2 - 0.5*sqrt(3)/2},{\D*sqrt(3)/2 + 0.5/2}) node[midway, above left] {$m_1$};
+
+\end{tikzpicture}
+\caption{Space vector in 1st segment}
+\label{Isegment}
+\end{figure}

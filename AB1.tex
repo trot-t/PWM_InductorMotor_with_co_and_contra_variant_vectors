@@ -1,0 +1,55 @@
+\begin{circuitikz}
+\newcommand{\I}{3} 
+\newcommand{\alfa}{40}
+\newcommand{\teta}{120} 
+\newcommand{\Xaxe}{4.2}
+\newcommand{\Yaxe}{4.2}
+
+\draw[very thin, ->,>=latex] (0,0) -- ({\Xaxe},0) node[below right] {$A$};
+\draw[very thin, ->,>=latex] (0,0) -- ({\Xaxe*cos(\teta)},{\Xaxe*sin(\teta)}) 
+	node[right] {$B$}; 
+\draw[thick,red,->,>=latex] (0,0) -- ({\I*cos(\alfa)},{\I*sin(\alfa)}) 
+	node[above right] {$\vec{U}$}; 
+\draw[thin,dashed] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- ({\I*cos(\alfa)}, 0 ) 
+	node[below] {\tiny{$U_A$}}; 
+\draw[thin,dotted] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- 
+	({\I*cos(\alfa) + \I*sin(\alfa)/tan(60)}, 0 ) node[below] {\tiny{$U^A$}}; 
+\draw[thin,dotted] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- 
+	({\I*sin(\alfa)/tan(120)}, {\I*sin(\alfa)}) node[left] {\tiny{$U^B$}}; 
+\newcommand{\Oo}{(\teta-\alfa)}
+\draw[thin,dashed] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- 
+	({\I*cos(\Oo)*cos(\teta)},{\I*cos(\Oo)*sin(\teta)}) node[left] {\tiny{$U_B$}}; 
+\end{circuitikz}\hspace{1cm} 
+
+\begin{circuitikz}
+\newcommand{\I}{2.5} 
+\newcommand{\alfa}{40}
+\newcommand{\teta}{120}
+\newcommand{\tepa}{240} 
+\newcommand{\Xaxe}{3.2}
+\newcommand{\Yaxe}{3.2}
+
+\draw[very thin, ->,>=latex] (0,0) -- ({\Xaxe*cos(\teta)},{\Xaxe*sin(\teta)}) 
+	node[right] {$B$};
+\draw[very thin] (0,0) -- ({\Xaxe*cos(60)},{\Xaxe*sin(60)});
+\draw[very thin, ->,>=latex] (0,0) -- ({\Yaxe*cos(\tepa)},{\Yaxe*sin(\tepa)}) 
+	node[right] {$C$};
+\draw[very thin] (0,0) -- ({\Xaxe*cos(-60)},{\Xaxe*sin(-60)}); 
+\draw[thick,red,->,>=latex] (0,0) -- ({\I*cos(\alfa)},{\I*sin(\alfa)}) 
+	node[above right] {$\vec{U}$}; 
+\draw[thin,dotted] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- 
+	({\I*cos(\alfa) - \I*sin(\alfa)/tan(60)}, 0 ); 
+\newcommand{\Oo}{(\teta-\alfa)}
+\draw[thin,dashed] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- 
+	({\I*cos(\Oo)*cos(\teta)},{\I*cos(\Oo)*sin(\teta)}) node[left] {\tiny{$U_B$}};
+\newcommand{\Ooo}{(60-\alfa)}
+\newcommand{\DD}{\I*cos(\Ooo)}
+\draw[thin,dashed] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- 
+	({\DD*cos(60)},{\DD*sin(60)}) node[left=-0mm] {\tiny{$U_C$}};
+\newcommand{\DDD}{(\I*cos(\alfa) + \I*sin(\alfa)/tan(60))}
+\draw[thin,dotted] ({\I*cos(\alfa)},{\I*sin(\alfa)}) -- 
+	({\DDD*cos(60)},{\DDD*sin(60)}) node[above left=-1.5mm] {\tiny{$U^C$}};
+\newcommand{\DDDD}{(\I*cos(\alfa) - \I*sin(\alfa)/tan(60))}
+\draw[thin,dotted] ({\DDDD}, 0 ) -- 
+	({\DDDD*cos(-60)},{\DDDD*sin(-60)}) node[below left=-1mm] {\tiny{$U_B$}}; 
+\end{circuitikz} 
